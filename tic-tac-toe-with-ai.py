@@ -14,10 +14,7 @@ model = joblib.load("model.joblib")
 data2 = data.copy()
 
 
-
 pygame.init()
-
-#window_surface = pygame.SDL_GetWindowSurface()
 
 size = width,height = 2150, 1000
 
@@ -225,6 +222,8 @@ def main_page_singalplayer():
         
         
         if no_of_box_filled >= 13:
+            data = data2.copy()
+            data.to_csv("data.csv")
             for b in rectArray:
                 b[4] = 0
                 
@@ -529,6 +528,10 @@ def main_page_multiplayer():
         
         
         if no_of_box_filled >= 13:
+            data = player1_data.copy()
+            data = data.append(player2_data,ignore_index=True)
+            data.to_csv("data.csv")
+            
             for b in rectArray:
                 b[4] = 0
                 
